@@ -4,13 +4,14 @@ import 'package:flutter/material.dart';
 
 class BMIResult extends StatelessWidget {
 
-  final bool isMale = true; 
-  final double age = 20.0;
-  final double weight = 70.0;
+  final bool? isMale; 
+  final double? age;
+  final double? weight;
+  final double? result;
 
   
 
-  const BMIResult({ Key? key }) : super(key: key);
+  const BMIResult({ Key? key, this.isMale, this.age, this.weight, this.result }) : super(key: key);
    
   @override
   Widget build(BuildContext context) {
