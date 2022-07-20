@@ -79,7 +79,7 @@ class _BMICalculatorState extends State<BMICalculator> {
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
-                          color: isMale ? Colors.grey[400] : Colors.blue,
+                          color: isMale ? Colors.grey[400] : Colors.pinkAccent,
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -182,6 +182,7 @@ class _BMICalculatorState extends State<BMICalculator> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               FloatingActionButton(
+
                                 onPressed: () {
                                   setState(() {
                                     weight--;
@@ -190,6 +191,7 @@ class _BMICalculatorState extends State<BMICalculator> {
                                 heroTag: 'weight--',
                                 child: const Icon(Icons.remove),
                                 mini: true,
+
                               ),
                               const SizedBox(
                                 width: 5,

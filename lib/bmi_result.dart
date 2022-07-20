@@ -40,7 +40,7 @@ class BMIResult extends StatelessWidget {
       }else
       {
         range = 'you have Obese.';
-      };
+      }
 
     }
     
@@ -66,17 +66,17 @@ class BMIResult extends StatelessWidget {
             'Gender: $isMale',
             style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
           ),
-          SizedBox(height: 10,),
+          const SizedBox(height: 10,),
           Text(
             'Weight: $weight kg',
             style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
           ),
-          SizedBox(height: 10,),
+          const SizedBox(height: 10,),
           Text(
             'Age: $age years old',
             style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
           ),
-          SizedBox(height: 10,),
+          const SizedBox(height: 10,),
           Text(
             'BMI Result: ${result.round()}',
             style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
