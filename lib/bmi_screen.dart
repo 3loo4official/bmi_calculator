@@ -12,9 +12,10 @@ class BMICalculator extends StatefulWidget {
 
 class _BMICalculatorState extends State<BMICalculator> {
   double height = 170;
-  int age = 25;
-  int weight = 70;
+  double age = 25;
+  double weight = 70;
   bool isMale = true;
+  BMIResult result = const BMIResult();
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +23,7 @@ class _BMICalculatorState extends State<BMICalculator> {
       appBar: AppBar(
         title: const Text('BMI Calculator'),
       ),
+
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -146,33 +148,37 @@ class _BMICalculatorState extends State<BMICalculator> {
                           // ignore: avoid_print
                           print(value.round());
                         })
+
                   ],
                 ),
               ),
             ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.grey[400],
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.grey[400],
+                  ),
+                  width: double.infinity,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        'HEIGHT',
+                        style:
+                            TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                       ),
-                      child: Column(
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.baseline,
                         mainAxisAlignment: MainAxisAlignment.center,
+                        textBaseline: TextBaseline.alphabetic,
                         children: [
-                          const Text(
-                            'WEIGHT',
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                          ),
                           Text(
-                            '$weight',
+                            '${height.round()}',
                             style: const TextStyle(
+
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                           Row(
@@ -202,25 +208,10 @@ class _BMICalculatorState extends State<BMICalculator> {
                                 mini: true,
                               ),
                             ],
+
                           ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.grey[400],
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
                           const Text(
-                            'AGE',
+                            'CM',
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
@@ -257,13 +248,136 @@ class _BMICalculatorState extends State<BMICalculator> {
                               ),
                             ],
                           ),
+
                         ],
                       ),
-                    ),
-                  )
-                ],
+                      Slider(
+                          value: (height),
+                          min: 40.0,
+                          max: 220.0,
+                          onChanged: (value) {
+                            setState(() {
+                              height = value;
+                            });
+                            // ignore: avoid_print
+                            print(value.round());
+                          })
+                    ],
+                  ),
+                ),
               ),
             ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.grey[400],
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text(
+                              'WEIGHT',
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              '$weight',
+                              style: const TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                FloatingActionButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      weight--;
+                                    });
+                                  },
+                                  heroTag: 'weight--',
+                                  child: const Icon(Icons.remove),
+                                  mini: true,
+                                ),
+                                const SizedBox(width: 5,),
+                                FloatingActionButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      weight++;
+                                    });
+                                  },
+                                  heroTag: 'weight++',
+                                  child: const Icon(Icons.add),
+                                  mini: true,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.grey[400],
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text(
+                              'AGE',
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              '$age',
+                              style: const TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                FloatingActionButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      age--;
+                                    });
+                                  },
+                                  heroTag: 'age--',
+                                  child: const Icon(Icons.remove),
+                                  mini: true,
+                                ),
+                                const SizedBox(width: 5,),
+                                FloatingActionButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      age++;
+                                    });
+                                  },
+                                  heroTag: 'age++',
+                                  child: const Icon(Icons.add),
+                                  mini: true,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+
           ),
           Container(
               width: double.infinity,
@@ -291,6 +405,7 @@ class _BMICalculatorState extends State<BMICalculator> {
                     style: TextStyle(color: Colors.white),
                   )))
         ],
+
       ),
     );
   }

@@ -7,6 +7,7 @@ class BMIResult extends StatelessWidget {
   final double weight;
   final double result;
 
+
   const BMIResult(
       {Key? key,
       required this.age,
@@ -14,6 +15,7 @@ class BMIResult extends StatelessWidget {
       required this.weight,
       required this.result})
       : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
